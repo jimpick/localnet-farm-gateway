@@ -1,0 +1,26 @@
+{
+  "name": "localnet-farm-gateway",
+  "version": "1.0.0",
+  "description": "localnet-farm-gateway ===",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimpick/localnet-farm-gateway.git"
+  },
+  "keywords": [],
+  "author": "Jim Pick (@jimpick)",
+  "license": "MIT/Apache-2 (Permissive License Stack)",
+  "bugs": {
+    "url": "https://github.com/jimpick/localnet-farm-gateway/issues"
+  },
+  "homepage": "https://github.com/jimpick/localnet-farm-gateway#readme",
+  "dependencies": {
+    "@fastify/cors": "^7.0.0",
+    "borc": "^3.0.0",
+    "fastify": "^3.28.0",
+    "raw-body": "^2.5.1"
+  }
+}
