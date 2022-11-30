@@ -72,7 +72,9 @@
   }
 
   route /token {
-    reverse_proxy 127.0.0.1:11001
+    reverse_proxy 127.0.0.1:11001 {
+      header_down Access-Control-Allow-Origin "*"
+    }
   }
 
 }
