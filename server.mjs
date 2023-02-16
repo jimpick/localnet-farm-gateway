@@ -70,6 +70,38 @@ fastify.post('/upload', async (request, reply) => {
   }
 })
 
+const resetCounter = process.env['RESET_COUNTER'] || './reset-counter'
+if (resetCounter) {
+  console.log('Jim1')
+  fastify.post('/reset', async (request, reply) => {
+    console.log('Jim2', request)
+    try {
+      const counter = fs.readFileSync(resetCounter, 'utf8')
+      const newCounter = (Number(counter) || 0) + 1
+      fs.writeFileSync(resetCounter, `${newCounter}`)
+      if (isNaN(newCounter)) newCounter = 0
+      return {
+        counter: newCounter
+      }
+    } catch (e) {
+      console.error('Exception:', e.message)
+      console.error('Code:', e.code)
+      console.error('stdout:\n', e.stdout)
+      console.error('stderr:\n', e.stderr)
+      return (
+        reply
+          .code(400)
+          .header('Content-Type', 'application/json; charset=utf-8')
+          .send({
+            success: false,
+            code: e.code,
+            error: e.stderr
+          })
+      )
+    }
+  })
+}
+
 // const port = process.env.PORT || 3000
 const port = 4000
 

@@ -67,7 +67,15 @@
     }
   }
 
+  route / {
+    respond "localnet.farm" 200
+  }
+
   route /upload {
+    reverse_proxy 127.0.0.1:4000
+  }
+
+  route /reset {
     reverse_proxy 127.0.0.1:4000
   }
 
